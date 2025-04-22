@@ -9,7 +9,7 @@ const getRequest = async (url: any, header: any) => {
         })
         const jsonResponse = await response.json()
         return JSON.stringify(jsonResponse)
-    }
+    } 
     catch (error:any) {
         console.error("Get Method error", error)
         return JSON.stringify({ error: error.message });
