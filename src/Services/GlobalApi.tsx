@@ -1,14 +1,15 @@
 
 const movieBaseUrl = "https://api.themoviedb.org/3";
 const apiKey = "2ec0d66f5bdf1dd12eefa0723f1479cf";  
-const getRequest = async (url: any, header: any) => {
+const Image_base_url = "https://image.tmdb.org/t/p/original/";
+const getRequest = async (url: any, /* header: any */) => {
     try {
         const response = await fetch(url, {
-            method: "GET",
-            headers: header
+            method: "GET"/* ,
+            headers: header */
         })
         const jsonResponse = await response.json()
-        return JSON.stringify(jsonResponse)
+        return jsonResponse;
     } 
     catch (error:any) {
         console.error("Get Method error", error)
@@ -45,7 +46,7 @@ const deleteRequest = async (url:any, body:any, header:any) => {
         return JSON.stringify({ error: error.message });
     }
 }
-const getTrendingVideoas = getRequest(`${movieBaseUrl}/trending/all/week?api_key=${apiKey}`,null);
+const getTrendingVideoas = getRequest(`${movieBaseUrl}/trending/all/day?api_key=${apiKey}`);
 export default {
-  getTrendingVideoas
+  getTrendingVideoas,Image_base_url
 };

@@ -20,19 +20,19 @@ function Header() {
         <div className='flex items-center gap-8'>
         <img src={logo} alt="Logo" className="w-[80px] md:w-[100px] object-cover" />
         <div className='hidden md:flex items-center gap-8'>
-        {menu.map((item:any)=>(
-            <HeaderItems name={item.name} Icon={item.icon}/>
+        {menu.map((item:any,index)=>(
+            <HeaderItems key={index} name={item.name} Icon={item.icon}/>
         ))}
         </div>
         <div className='flex items-center gap-5 md:hidden'>
         {menu.map((item:any,index)=>index<3&&(
-            <HeaderItems name={''} Icon={item.icon}/>
+            <HeaderItems key={index} name={''} Icon={item.icon}/>
         ))}
         <div className='md:hidden' onClick={()=>setToggle(!toggle)}>
           <HeaderItems name='' Icon={<HiDotsVertical className='text-[20px]'/>}/>
           {toggle?<div className='absolute mt-3 bg-[#121212] border-[1px] border-gray-700 p-3 px-5 py-4'>
             {menu.map((item:any,index)=>index>2&&(
-            <HeaderItems name={item.name} Icon={item.icon}/>
+            <HeaderItems key={index}name={item.name} Icon={item.icon}/>
         ))}
           </div>:null}
         </div>
