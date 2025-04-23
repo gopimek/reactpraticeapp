@@ -2,6 +2,7 @@
 const movieBaseUrl = "https://api.themoviedb.org/3";
 const apiKey = "2ec0d66f5bdf1dd12eefa0723f1479cf";  
 const Image_base_url = "https://image.tmdb.org/t/p/original/";
+const movieByGenreBaseURL='https://api.themoviedb.org/3/discover/movie?api_key=2ec0d66f5bdf1dd12eefa0723f1479cf';
 const getRequest = async (url: any, /* header: any */) => {
     try {
         const response = await fetch(url, {
@@ -47,6 +48,8 @@ const deleteRequest = async (url:any, body:any, header:any) => {
     }
 }
 const getTrendingVideoas = getRequest(`${movieBaseUrl}/trending/all/day?api_key=${apiKey}`);
+const getMovieByGenreId=(id:any)=> getRequest(`${movieByGenreBaseURL}&/with_genres=${id}`);
+
 export default {
-  getTrendingVideoas,Image_base_url
+  getTrendingVideoas,Image_base_url,getMovieByGenreId
 };
